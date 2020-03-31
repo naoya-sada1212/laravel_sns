@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function followers()
     {
-        return $this->belongsToMany(self::class, 'followers','followed_id','following_id');
+        return $this->belongsToMany(self::class, 'followers', 'followed_id', 'following_id');
     }
     public function follows()
     {

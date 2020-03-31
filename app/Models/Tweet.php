@@ -17,14 +17,16 @@ class Tweet extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function favorites()
-    {
-        return $this->hasMany(Favorite::class);
-    }
-    public function comments()
+    public function comment()
     {
         return $this->hasMany(Comment::class);
     }
+    public function favorite()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    
     
     public function getUserTimeLine(Int $user_id)
     {
