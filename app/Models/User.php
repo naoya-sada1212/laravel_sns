@@ -16,7 +16,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-    //protected $table = 'Users';
     protected $fillable = [
         'name', 'email', 'password','screen_name','team','profile_image'
     ];
@@ -71,5 +70,28 @@ class User extends Authenticatable
     public function isFollowed(Int $user_id)
     {
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
+    }
+
+    public function updateProfile(Array $params)
+    {
+        if (isset($params['profile_image'])) {
+            $file_name = $params['profile_image']->store('public/profile_image/');
+
+            $this::where('id', $this->id)
+                 ->update([
+                     'screen_name' => $params['screen_name'],
+                     'name' => $params['name'],
+                     'profile_image' => basename($file_name),
+                     'email' => $params['email'],
+                 ]);
+        } else {
+            $this::where('id', $this->id)
+              ->update([
+                  'screen_name' => $params['screen_name'],
+                  'name' => $params['name'],
+                  'email' => $params['email'],
+              ]);
+        }
+        return;
     }
 }

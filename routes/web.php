@@ -26,4 +26,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('users/{id}/follow', 'UserController@follow')->name('follow');
     Route::delete('users/{id}/unfollow', 'UserController@unfollow')->name('unfollow');
+    
 });
