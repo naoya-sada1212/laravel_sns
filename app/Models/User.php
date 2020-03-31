@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PhpParser\Node\Expr\Cast\Int_;
 
 class User extends Authenticatable
 {
@@ -15,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //protected $table = 'Users';
     protected $fillable = [
         'name', 'email', 'password','screen_name','team','profile_image'
     ];
@@ -43,6 +45,31 @@ class User extends Authenticatable
     }
     public function follows()
     {
-        return $this->belongsToMany(self::class, 'followeres', 'following_id', 'followed_id');
+        return $this->belongsToMany(self::class, 'followers', 'following_id', 'followed_id');
+    }
+
+    public function getAllUsers(Int $user_id)
+    {
+        return $this->where('id', '<>', $user_id)->paginate(5);
+    }
+    //フォローする
+    public function follow(Int $user_id)
+    {
+        return $this->follows()->attach($user_id);
+    }
+    //フォロー解除
+    public function unfollow(Int $user_id)
+    {
+        return $this->follows()->detach($user_id);
+    }
+    //フォローしているか
+    public function isFollowing(Int $user_id)
+    {
+        return (boolean) $this->follows()->where('followed_id', $user_id)->first(['id']);
+    }
+    //フォローされているか
+    public function isFollowed(Int $user_id)
+    {
+        return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
 }

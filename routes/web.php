@@ -22,5 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource('users','UserController');
+    Route::resource('users','UserController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+    Route::post('users/{id}/follow', 'UserController@follow')->name('follow');
+    Route::delete('users/{id}/unfollow', 'UserController@unfollow')->name('unfollow');
 });

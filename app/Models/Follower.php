@@ -16,4 +16,6 @@ class Follower extends Model
     ];
     public $timestamps = false;
     public $incrementing = false;
+
+    
 }
