@@ -37,4 +37,11 @@ class Tweet extends Model
     {
         return $this->where('user_id', $user_id)->count();
     }
+
+    public function getTimeLines(Int $user_id, Array $follow_ids)
+    {
+        $follow_ids[] = $user_id;
+        return $this->whereIn('user_id', $follow_ids)->orderBy('created_at','DESC')->paginate(50);
+
+    }
 }
