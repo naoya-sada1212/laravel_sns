@@ -24,4 +24,8 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+    public function redirectPath()
+    {
+        return '/tweets';
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use PhpParser\Node\Expr\Cast\Int_;
 
 class Tweet extends Model
 {
@@ -57,6 +58,24 @@ class Tweet extends Model
         $this->save();
 
         return;
+    }
+    
+    public function getEditTweet(Int $user_id, Int $tweet_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $tweet_id)->first();
+    }
+
+    public function tweetUpdate(Int $tweet_id, Array $data)
+    {
+        $this->id = $tweet_id;
+        $this->text = $data['text'];
+        $this->update();
+
+        return;
+    }
+    public function deleteTweet(Int $tweet_id, Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $tweet_id)->delete();
     }
 
 }
