@@ -19,15 +19,16 @@ class TweetsController extends Controller
     public function index(Tweet $tweet, Follower $follower)
     {
         $user = auth()->user();
-        $follow_ids = $follower->followeingIds($user->id);
+        $follow_ids = $follower->followingIds($user->id);
         
         //followed_idをとる
         $following_ids = $follow_ids->pluck('followed_id')->toArray();
-        $timeLines = $tweet->getTimeLines($user->id, $following_ids);
-        
+        $timelines = $tweet->getTimeLines($user->id, $following_ids);
+        //dd($timelines);
+        //return view('sample',['timelines' => $timelines]);
         return view('tweets.index', [
             'user' => $user,
-            'timeLines' => $timeLines,
+            'timelines' => $timelines,
         ]);
     }
 

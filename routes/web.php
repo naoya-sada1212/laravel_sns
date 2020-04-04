@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('comments', 'CommentsController', ['only' => 'store'
     ]);
+
+    Route::resource('favorites', 'FavoritesController', ['only' => ['store','destroy']]);
 });
