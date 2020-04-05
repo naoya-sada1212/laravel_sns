@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','ユーザー詳細')
 
 @section('content')
 <div class="container">
@@ -98,7 +99,7 @@
                 <p class="mb-0 text-secondary">{{ count($timeline->comment) }}</p>
               </div>
               <div class="d-flex align-items-center">
-                if (!in_array(Auth::user()->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
+                @if (!in_array(Auth::user()->id, array_column($timeline->favorite->toArray(), 'user_id'), TRUE))
                 <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
                   @csrf 
                   
@@ -128,3 +129,4 @@
   </div>  
 </div>
 @endsection
+@include('layouts.footer')

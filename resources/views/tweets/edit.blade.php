@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','ツイート編集')
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
@@ -44,3 +45,4 @@
   </div>
 </div>
 @endsection
+@include('layouts.footer')

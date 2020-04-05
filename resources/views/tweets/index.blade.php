@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','タイムライン')
 @section('content')
 
 <div class="container">
@@ -76,3 +77,4 @@
   </div>
 </div>
 @endsection
+@include('layouts.footer')

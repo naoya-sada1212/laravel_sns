@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','ツイート詳細')
 @section('content')
 
 <div class="container">
@@ -131,3 +132,4 @@
   </div>
 </div>
 @endsection
+@include('layouts.footer')
