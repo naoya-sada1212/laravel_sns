@@ -21,9 +21,15 @@
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-
+<style>
+    body {
+      background-image: url(baseball.jpg);
+      background-size: cover;
+      height: 100%;
+   } 
+</style>
 <body>
-  @component('components.header')
+  @component('components.userHeader')
   @endcomponent  
   @yield('home')
     <main class="py-4">

@@ -10882,3 +10882,9 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-image: url(/images/baseball.jpg?a5bafc7537d7b05f011c36b4914532be);
+  background-size: cover;
+  height: 100%;
+}
+

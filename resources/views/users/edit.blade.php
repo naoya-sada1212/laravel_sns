@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appUser')
 @section('title','ユーザー編集')
 @section('content')
 <div class="container">
@@ -83,4 +83,3 @@
   </div>
 </div>
 @endsection
-@include('layouts.footer')

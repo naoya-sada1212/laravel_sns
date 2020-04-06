@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appUser')
 @section('title','ユーザー詳細')
 
 @section('content')
@@ -107,7 +107,7 @@
                   <button type="submit" class="btn p-0 border-0 text-primary"><i class="far fa-heart fa-fw"></i></button>
                 </form>
                 @else
-                  <form method="POST" action="{{url('favorites/' .array_column($timeline->favorites->toArray(), 'id', 'user_id')[Auth::user()->id]) }}" class="mb--0">
+                  <form method="POST" action="{{url('favorites/' .array_column($timeline->favorite->toArray(), 'id', 'user_id')[Auth::user()->id]) }}" class="mb--0">
                     @csrf
                     @method('DELETE')
 
@@ -129,4 +129,3 @@
   </div>  
 </div>
 @endsection
-@include('layouts.footer')

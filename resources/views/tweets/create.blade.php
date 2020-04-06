@@ -47,11 +47,3 @@
   </div>
 </div>
 @endsection
-<footer class="py-3 fixed-bottom">
-  <div class="container">
-    <span class="text-muted small">baseball_app laravel</span>
-  </div>
-  <div class="d-flex">
-    <a href="{{ url('tweets') }}" class="btn btn-primary">ツイート一覧へ</a>
-  </div>
-</footer>
